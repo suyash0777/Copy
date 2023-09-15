@@ -28,7 +28,7 @@ const Footer = () => {
         <a href="https://www.snapchat.com/add/patil_suyash1?share_id=1IS0unM9Z7c&locale=en-US">
           SnapChat
         </a>
-        <a href="http://instagram.com/meabhisingh">Facebook</a>
+        <a href="https://www.facebook.com/suyash.patil.186">Facebook</a>
       </div>
     </footer>
   );
