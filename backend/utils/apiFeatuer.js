@@ -1,6 +1,4 @@
-const { json } = require("express");
-
-class Apifeature {
+class ApiFeatures {
   constructor(query, querystr) {
     this.query = query;
     this.querystr = querystr;
@@ -15,19 +13,20 @@ class Apifeature {
         }
       : {};
 
+    // console.log(keyword);
     this.query = this.query.find({ ...keyword });
     return this;
   }
   filter() {
     const querycopy = { ...this.querystr };
 
-    const removefield = ["keayword", "page", "limit"];
+    const removefield = ["keyword", "page", "limit"];
     removefield.forEach((key) => delete querycopy[key]);
     //filter for price and rating
-    console.log(querycopy);
+    // console.log(querycopy);
     let querystr = JSON.stringify(querycopy);
     querystr = querystr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
-    console.log(querystr);
+    // console.log(querystr);
     this.query = this.query.find(JSON.parse(querystr));
     return this;
   }
@@ -40,4 +39,4 @@ class Apifeature {
   }
 }
 
-module.exports = Apifeature;
+module.exports = ApiFeatures;
