@@ -13,9 +13,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const { loading, error, products, productCount } = useSelector(
-    (state) => state.products
-  );
+  const { loading, error, products } = useSelector((state) => state.products);
 
   useEffect(() => {
     if (error) {
