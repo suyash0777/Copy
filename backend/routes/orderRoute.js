@@ -1,5 +1,4 @@
 const express = require("express");
-
 const router = express.Router();
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const {
@@ -23,7 +22,10 @@ router
 
 router
   .route("/admin/order/:id")
-  .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder)
+  .put(isAuthenticatedUser, authorizeRoles("admin"), updateOrder);
+
+router
+  .route("/admin/order/:id")
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteOrder);
 
 module.exports = router;

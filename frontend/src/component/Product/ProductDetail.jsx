@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { useParams } from "react-router-dom";
 import "./ProductDetail.css";
@@ -12,16 +12,39 @@ import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard.js";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
+import { useNavigate } from "react-router-dom";
+import { addItemsToCart } from "../../store/actions/cartAction";
 
 const ProductDetail = ({ match }) => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
   const alert = useAlert();
-
+  const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
+
+  const increaseQuantity = () => {
+    if (product.stock <= quantity) return;
+
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    navigate("/Cart");
+    alert.success("Item Added To Cart");
+  };
 
   useEffect(() => {
     if (error) {
@@ -74,11 +97,16 @@ const ProductDetail = ({ match }) => {
                 <h1>{`₹${product.price}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button>-</button>
-                    <input readOnly type="number" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input readOnly value={quantity} type="number" />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>Add to Cart</button>
+                  <button
+                    disabled={product.Stock < 1 ? true : false}
+                    onClick={addToCartHandler}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
 
                 <p>

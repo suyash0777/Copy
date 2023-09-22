@@ -22,8 +22,7 @@ const ResetPassword = () => {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  console.log(password);
-  console.log(confirmPassword);
+
   const resetPasswordSubmit = (e) => {
     e.preventDefault();
 
