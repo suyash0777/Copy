@@ -6,14 +6,27 @@ footer {
     display: flex;
     align-items: center;
   }
+
+  /* Increase the font size for About and Contact links */
+.footer-link {
+  font-size: 18px; /* Adjust the font size to your preference */
+  color: aliceblue;
+}
+
+.leftFooter > h4 {
+  font-family: "Roboto";
+  font-size: 1.5vmax;
+  text-decoration: underline;
+}
+
   
-  .leftFooter {
-    width: 20%;
-    display: flex;
-  
-    flex-direction: column;
-    align-items: center;
-  }
+.leftFooter {
+  width: 20%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
   .leftFooter > h4 {
     font-family: "Roboto";
     font-size: 1vmax;
@@ -39,7 +52,7 @@ footer {
   .midFooter > h1 {
     font-size: 4vmax;
     font-family: "Roboto";
-    color: #eb4034;
+    color: #5698c7;
   }
   .midFooter > p {
     max-width: 60%;
@@ -69,5 +82,5 @@ footer {
   }
   
   .rightFooter > a:hover {
-    color: #eb4034;
+    color: #5698c7;
   }

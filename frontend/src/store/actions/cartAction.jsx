@@ -22,13 +22,16 @@ export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
     },
   });
 
-  // Save the updated cartItems to localStorage
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  // Save the updated cartItems to sessionStorage
+  sessionStorage.setItem(
+    "cartItems",
+    JSON.stringify(getState().cart.cartItems)
+  );
 };
 
-// Load cart data from localStorage when the application starts
+// Load cart data from sessionStorage when the application starts
 export const loadCartFromStorage = () => (dispatch) => {
-  const savedCartItems = localStorage.getItem("cartItems");
+  const savedCartItems = sessionStorage.getItem("cartItems");
   if (savedCartItems) {
     const parsedCartItems = JSON.parse(savedCartItems);
     dispatch({
@@ -45,7 +48,10 @@ export const removeItemsFromCart = (id) => async (dispatch, getState) => {
     payload: id,
   });
 
-  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  sessionStorage.setItem(
+    "cartItems",
+    JSON.stringify(getState().cart.cartItems)
+  );
 };
 
 // SAVE SHIPPING INFO
@@ -55,5 +61,5 @@ export const saveShippingInfo = (data) => async (dispatch) => {
     payload: data,
   });
 
-  localStorage.setItem("shippingInfo", JSON.stringify(data));
+  sessionStorage.setItem("shippingInfo", JSON.stringify(data));
 };

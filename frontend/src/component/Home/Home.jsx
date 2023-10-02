@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { FaMouse } from "react-icons/fa";
 import "./Home.css";
 import Product from "./Product";
 import MetaData from "../layout/MetaData";
@@ -31,13 +30,8 @@ const Home = () => {
         <>
           <MetaData title="E-COMMERCE" />
           <div className="banner">
-            <p>Welcome to Ecommerce</p>
+            <p>Welcome to ShopNew</p>
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
-            <a href="#container">
-              <button>
-                Scroll <FaMouse />
-              </button>
-            </a>
           </div>
           <h2 className="homeHeading">Featured Products</h2>
 

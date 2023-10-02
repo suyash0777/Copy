@@ -1,8 +1,24 @@
+/* Your existing CSS for .speedDial */
+
 .speedDial {
-    position: fixed;
-    right: 3vmax;
-    top: 3vmax;
+  color: #5698c7;
+  position: fixed;
+  right: 3vmax;
+  top: 6vmax;
+}
+
+/* Media query for screens with a maximum width of a typical mobile view (adjust as needed) */
+@media (max-width: 768px) {
+  .speedDial {
+    /* Adjust styles for mobile view */
+    right: 30px; /* Example: Change the right position */
+    top: 95px; /* Example: Change the top position */
+    font-size: 12px; /* Example: Reduce font size */
+    width: 10px; /* Example: Reduce width */
+    height: 30px; 
   }
+}
+
   
   /* .speedDialIcon {
     width: 56px;
