@@ -12,13 +12,13 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder } from "../../store/actions/orderAction";
 import { clearErrors } from "../../store/actions/productAction";
+import instance from "../../store/actions/axios";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -58,7 +58,7 @@ const Payment = () => {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post(
+      const { data } = await instance.post(
         "/api/v1/payment/process",
         paymentData,
         config

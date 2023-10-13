@@ -42,9 +42,13 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-// Logout User
 exports.logout = catchAsyncError(async (req, res, next) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    domain: ".shopnew.onrender.com",
+    secure: true,
+    sameSite: "None",
+    path: "/api/v1",
+  });
 
   res.status(200).json({
     success: true,
