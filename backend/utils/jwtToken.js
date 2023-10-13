@@ -1,5 +1,5 @@
 const sendToken = (user, statusCode, res) => {
-  const token = user.getJWToken();
+  const token = user.getJWTToken();
 
   // Options for the cookie
   const options = {
