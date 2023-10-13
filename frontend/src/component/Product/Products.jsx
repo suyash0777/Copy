@@ -13,8 +13,8 @@ import MetaData from "../layout/MetaData";
 
 const categories = [
   "Shirts",
-  "Footwear",
-  "Bottom",
+  "Jacket",
+  "Jeans",
   "Tops",
   "Tshirts",
   "Shorts",

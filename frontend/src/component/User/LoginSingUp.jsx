@@ -5,7 +5,6 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
-import profilePhoto from "../../images/Profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../store/actions/userAction";
 import { useAlert } from "react-alert";
@@ -30,9 +29,6 @@ const LoginSingUp = () => {
   });
   const { name, email, password } = user;
 
-  const [avatar, setAvatar] = useState(profilePhoto);
-  const [avatarPreview, setAvatarPreview] = useState(profilePhoto);
-
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -46,7 +42,6 @@ const LoginSingUp = () => {
     myForm.append("name", name);
     myForm.append("email", email);
     myForm.append("password", password);
-    myForm.append("avatar", avatar);
     console.log("name", name);
     console.log("email", email);
     console.log("password", password);
@@ -55,19 +50,7 @@ const LoginSingUp = () => {
   };
 
   const registerDataChange = (e) => {
-    if (e.target.name === "avatar") {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const loginTab = useRef(null);
@@ -179,16 +162,6 @@ const LoginSingUp = () => {
                     required
                     name="password"
                     value={password}
-                    onChange={registerDataChange}
-                  />
-                </div>
-
-                <div id="registerImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
-                  <input
-                    type="file"
-                    name="avatar"
-                    accept="image/*"
                     onChange={registerDataChange}
                   />
                 </div>

@@ -60,7 +60,7 @@ function Navbar() {
             >
               <input
                 type="text"
-                placeholder="Search a Product ..."
+                placeholder="Search a Product..."
                 onChange={(e) => setKeyword(e.target.value)}
               />
             </form>

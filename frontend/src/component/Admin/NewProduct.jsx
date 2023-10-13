@@ -72,9 +72,6 @@ const NewProduct = ({ history }) => {
   const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
-    // setImages([]);
-    // setImagesPreview([]);
-
     files.forEach((file) => {
       const reader = new FileReader();
 

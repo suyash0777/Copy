@@ -1,3 +1,12 @@
+.profile {
+  background-color: blue;
+  background-image: url("../../../images//MacD.jpg");
+  width: 250px;
+  height: 250px;
+  border-radius: 50%; /* Makes it a circular profile picture */
+  background-size: cover;
+}
+
 .aboutSection {
     height: 100vh;
     width: 100vw;

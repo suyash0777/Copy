@@ -17,12 +17,8 @@ const About = () => {
 
         <div>
           <div>
-            <img
-              style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src="/images/MacD.png"
-              alt="Founder"
-            />
-            <Typography>Suyash Patil</Typography>
+            <div className="profile"></div>
+            <Typography style={{ fontSize: "20px" }}>Suyash Patil</Typography>
             <Button onClick={visitInstagram} color="primary">
               Visit Instagram
             </Button>
