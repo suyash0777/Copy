@@ -39,7 +39,6 @@ import UpdateUser from "./component/Admin/UpdateUser.jsx";
 import ProductReviews from "./component/Admin/ProductReviews.jsx";
 import About from "./component/layout/About/About";
 import Contact from "./component/layout/Contact/Contact";
-import NotFound from "./component/layout/Not Found/Not Found";
 import instance from "./store/actions/axios";
 
 function App() {
@@ -62,7 +61,7 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
-  window.addEventListener("contextmenu", (e) => e.preventDefault());
+  // window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>
@@ -87,7 +86,6 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
-        <Route exact path="/*" element={<NotFound />} />
         <Route exact path="/login" element={<LoginSingUp />} />
         <Route element={<ProtectedRoute />}>
           <Route exact path="/account" element={<Profile />} />

@@ -44,7 +44,6 @@ const LoginSingUp = () => {
     myForm.append("password", password);
     console.log("name", name);
     console.log("email", email);
-    console.log("password", password);
 
     dispatch(register(myForm));
   };

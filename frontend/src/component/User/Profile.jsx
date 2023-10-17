@@ -4,17 +4,35 @@ import { Link } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
 import { useSelector } from "react-redux";
 import "./Profile.css";
+import ExitToAppIcon from "@material-ui/icons/Edit";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/actions/userAction";
+import { useAlert } from "react-alert";
 
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const alert = useAlert();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isAuthenticated === false) {
       navigate("/login");
     }
   }, [navigate, isAuthenticated]);
+
+  function logoutUser() {
+    // Call the logout action to clear the user state
+    dispatch(logout());
+
+    // Delete the "token" cookie
+    document.cookie =
+      "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.shoptrick.onrender.com; path=/;";
+
+    alert.success("Logout Successfully");
+    navigate("/login");
+  }
 
   return (
     <>
@@ -44,6 +62,12 @@ const Profile = () => {
               <div>
                 <Link to="/orders">My Orders</Link>
                 <Link to="/password/update">Change Password</Link>
+              </div>
+              <div>
+                <Link className="edit-profile">
+                  <ExitToAppIcon />
+                  <p onClick={logoutUser}>Logout</p>
+                </Link>
               </div>
             </div>
           </div>

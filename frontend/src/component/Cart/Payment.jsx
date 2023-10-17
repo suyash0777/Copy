@@ -19,6 +19,7 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { createOrder } from "../../store/actions/orderAction";
 import { clearErrors } from "../../store/actions/productAction";
 import instance from "../../store/actions/axios";
+import Loader from "../layout/Loader/Loader";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
@@ -31,7 +32,7 @@ const Payment = () => {
   const payBtn = useRef(null);
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.user);
+  const { user, loading } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.productDetails);
 
   const paymentData = {
@@ -118,32 +119,38 @@ const Payment = () => {
 
   return (
     <>
-      <MetaData title="Payment" />
-      <CheckoutSteps activeStep={2} />
-      <div className="paymentContainer">
-        <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <Typography>Card Info</Typography>
-          <div>
-            <CreditCardIcon />
-            <CardNumberElement className="paymentInput" />
-          </div>
-          <div>
-            <EventIcon />
-            <CardExpiryElement className="paymentInput" />
-          </div>
-          <div>
-            <VpnKeyIcon />
-            <CardCvcElement className="paymentInput" />
-          </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <MetaData title="Payment" />
+          <CheckoutSteps activeStep={2} />
+          <div className="paymentContainer">
+            <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
+              <Typography>Card Info</Typography>
+              <div>
+                <CreditCardIcon />
+                <CardNumberElement className="paymentInput" />
+              </div>
+              <div>
+                <EventIcon />
+                <CardExpiryElement className="paymentInput" />
+              </div>
+              <div>
+                <VpnKeyIcon />
+                <CardCvcElement className="paymentInput" />
+              </div>
 
-          <input
-            type="submit"
-            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
-            ref={payBtn}
-            className="paymentFormBtn"
-          />
-        </form>
-      </div>
+              <input
+                type="submit"
+                value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+                ref={payBtn}
+                className="paymentFormBtn"
+              />
+            </form>
+          </div>
+        </>
+      )}
     </>
   );
 };
