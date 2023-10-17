@@ -9,7 +9,7 @@ const sendToken = (user, statusCode, res) => {
     // httpOnly: true,
     secure: true,
     sameSite: "None",
-    domain: ".shopnew.onrender.com",
+    domain: ".newshop.onrender.com",
     path: "/api/v1",
   };
 

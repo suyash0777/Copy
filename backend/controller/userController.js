@@ -44,7 +44,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
 
 exports.logout = catchAsyncError(async (req, res, next) => {
   res.clearCookie("token", {
-    domain: ".shopnew.onrender.com",
+    domain: ".newshop.onrender.com",
     secure: true,
     sameSite: "None",
     path: "/api/v1",
