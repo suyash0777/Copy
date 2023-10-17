@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(
   cors({
-    origin: ["https://e-newshop.netlify.app", "https://newshop.onrender.com"],
+    origin: ["https://e-newshoppp.netlify.app", "https://newshop.onrender.com"],
     credentials: true,
   })
 );
