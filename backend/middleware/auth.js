@@ -8,9 +8,13 @@ exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
   if (!token) {
     return next(new ErrorHandler("Please login to access this resource", 401));
   }
-  const decodeData = jwt.verify(token, process.env.JWT_SECRET);
-  req.user = await User.findById(decodeData.id);
-  next();
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await User.findById(decoded.id);
+    next();
+  } catch (err) {
+    return next(new ErrorHandler("Invalid token. Please login again.", 401));
+  }
 });
 
 exports.authorizeRoles = (...roles) => {
