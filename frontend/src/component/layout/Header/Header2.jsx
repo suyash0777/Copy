@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Header2.css";
 
 import SearchIcon from "@material-ui/icons/Search";
+import HorizontalSplitIcon from "@material-ui/icons/HorizontalSplit";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
@@ -31,7 +32,7 @@ function Header3() {
           <nav>
             <input type="checkbox" id="check" />
             <label htmlFor="check" className="checkbtn">
-              <SearchIcon fontSize="large" />
+              <HorizontalSplitIcon />
             </label>
 
             <div className="logo">
