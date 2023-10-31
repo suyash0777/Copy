@@ -12,7 +12,6 @@ const Footer = () => {
       <div className="leftFooter">
         <h4>About</h4>
         <ul>
-          <li></li>
           <li>
             <Link to="/about" className="footer-link">
               About Us
