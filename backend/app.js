@@ -17,7 +17,7 @@ app.use(fileUpload());
 app.use(
   cors({
     origin: [
-      "https://splendorous-tapioca-8e53dd.netlify.app",
+      "https://wonderful-tartufo-817682.netlify.app",
       "https://newshop-b4ff.onrender.com",
     ],
     credentials: true,

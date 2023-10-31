@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Header2.css";
 
 import SearchIcon from "@material-ui/icons/Search";
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
@@ -32,7 +31,7 @@ function Header3() {
           <nav>
             <input type="checkbox" id="check" />
             <label htmlFor="check" className="checkbtn">
-              <i className="fas fa-bars"></i>
+              <SearchIcon fontSize="large" />
             </label>
 
             <div className="logo">
